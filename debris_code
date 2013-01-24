@@ -1,0 +1,54 @@
+
+//		! 各インタフェースへの橋渡し
+//		template <class U, class CT>
+//		struct DuplConvert {
+//			const U& _u;
+//			DuplConvert(const U& u): _u(u) {}
+
+//			// 各インタフェース分のキャストを記述
+//			template <class T>
+//			operator const T& () const {
+//				// 型チェック
+//				typedef typename CT::Find<T>::result CHECK;
+//				return reinterpret_cast<const T&>(_u);
+//			}
+//		};
+
+//	ParamMap pm;
+//	pm.insert(TWAPIKWD::TL_USER::UserId, QString("%1").arg(sgNet.getMyID()));
+//	pm.insert(TWAPIKWD::TW_SHOW::IncludeMyRetweet, "true");
+//	pm.insert(TWAPIKWD::TL_USER::TrimUser, "true");
+//	sgNet.restAPI([](QJsonDocument& jdoc){
+//		QFile qf(QApplication::applicationDirPath() + "/../tmp");
+//		qf.open(QFile::WriteOnly|QFile::Text);
+//		{
+//		QDataStream ds(&qf);
+//		auto bs = jdoc.toJson();
+//		ds << bs;
+//		}
+//		qf.close();
+//	}, TWAPI::TL_MENTIONS, pm);
+template <class... Args, class CB>
+getInfo<2>(UserID id, CB cb) {
+	[cb](const User& u) {
+		cb((Args)u...);
+	}
+}
+
+
+//	QNetworkAccessManager amgr;
+//	QEventLoop evl;
+//	QObject::connect(&amgr, SIGNAL(finished(QNetworkReply*)),
+//					 &evl, SLOT(quit()));
+//	QNetworkReply* rep = amgr.get(QNetworkRequest(QUrl("http://localhost/clap/test.html")));
+//	evl.exec();
+//	auto code = rep->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+//	auto qa =  rep->readAll();
+
+//	QAction* act = new QAction(&w);
+//	act->setText(MainWindow::tr("hello?"));
+//	QMenu* mn = new QMenu(MainWindow::tr("theMenu"));
+//	w.menuBar()->addMenu(mn);
+//	mn->addAction(act);
+//	act->setShortcut(QKeySequence(Qt::SHIFT|Qt::Key_0));
+//	QObject::connect(act, SIGNAL(triggered()), qApp, SLOT(quit()));

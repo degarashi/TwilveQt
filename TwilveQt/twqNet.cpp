@@ -9,7 +9,6 @@
 #include <QDesktopServices>
 #include "validation.h"
 #include "twquser.h"
-
 namespace {
 	const static char* c_HESC[][2] = {
 		{u8"€", "&euro;"},
@@ -178,7 +177,6 @@ namespace {
 		QNetworkRequest req;
 		req.setUrl(url);
 		proc(req);
-
 		QNetworkReply* rep = am.get(req);
 		rep->setProperty(c_prop_type, type);
 		CBT* cbp = new CBT(cb);

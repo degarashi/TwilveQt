@@ -62,7 +62,7 @@ class CellMod {
 };
 namespace std {
 	template <>
-	inline void swap<CellMod>(CellMod& c0, CellMod& c1) noexcept {
+	inline void swap<CellMod>(CellMod& c0, CellMod& c1) {
 		c0.swap(c1);
 	}
 }

@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 			 QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 	a.installTranslator(&trQ);
 	// :MyApp
-	trMe.load("../translate/tr_" + c_code);
+	trMe.load(qApp->applicationDirPath() + "/../translate/tr_" + c_code);
 	a.installTranslator(&trMe);
 
 	std::unique_ptr<TwqNet> pNet(new TwqNet(nullptr));
